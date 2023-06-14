@@ -1,34 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-real-time-chat
 
-## Getting Starteds
+## Key Technical Decisions and Libraries Employed
 
-First, run the development server:
+### react-hook-form:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Performance is paramount in any project, and react-hook-form has been a key player in achieving this. This library optimizes form management in React by minimizing unnecessary re-renders. It uses uncontrolled components and native form behaviors, resulting in less JavaScript load. I've employed react-hook-form to manage form states and perform client-side validation, striking a balance between performance and developer experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Context API with Providers:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+I've utilized React's built-in Context API to handle global state management without resorting to prop drilling. This efficient approach allows me to share state and behavior across my component tree. In this project, I encapsulated the login logic within the Context API, demonstrating its usage while concurrently managing that context with a custom useLocalStorage hook.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Custom Hooks (useFormManager, useFormSubmit and useChat):
 
-## Learn More
+Custom hooks, a potent feature in React, have allowed me to extract and reuse stateful logic across components. This promotes code reusability and ensures a clear separation of concerns.
 
-To learn more about Next.js, take a look at the following resources:
+### Running the project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Within this context, npm run dev should be enough, we can add a production run or even wrap the project in a Docker container.
+The only dependency to this project is a WebSocket-based server, which will be demonstrated in the project debate.
